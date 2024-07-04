@@ -97,7 +97,7 @@ const EditProductBody = ({ route }) => {
             <ScrollView style={styles.scrollView}>
                 <View style={styles.container}>
                     <Text style={styles.headerText}>
-                        Formulario de registro
+                        Formulario de actualización
                     </Text>
                     <View>
                         <Text style={styles.label}>ID</Text>

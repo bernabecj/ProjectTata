@@ -73,7 +73,7 @@ const BodyHome = () => {
                 }
             >
                 <View style={styles.container}>
-                    <Text style={styles.headerText}>Products</Text>
+                    <Text style={styles.headerText}>Productos</Text>
                     <TextInput
                         style={styles.searchBar}
                         placeholder="Search..."
