@@ -1,0 +1,207 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render BodyHome 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView
+    refreshControl={
+      <RefreshControlMock
+        colors={
+          [
+            undefined,
+          ]
+        }
+        onRefresh={[Function]}
+        refreshing={false}
+      />
+    }
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  >
+    <RCTRefreshControl />
+    <View>
+      <View
+        style={
+          {
+            "flex": 1,
+            "marginBottom": 100,
+            "padding": 20,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "fontSize": 24,
+              "fontWeight": "bold",
+              "marginBottom": 20,
+            }
+          }
+        >
+          Productos
+        </Text>
+        <TextInput
+          onChangeText={[Function]}
+          placeholder="Search..."
+          style={
+            {
+              "borderColor": "#ccc",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "height": 40,
+              "marginBottom": 20,
+              "paddingHorizontal": 10,
+              "width": "100%",
+            }
+          }
+          value=""
+        />
+        <View
+          style={
+            {
+              "borderColor": "#ccc",
+              "borderRadius": 8,
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "flexWrap": "wrap",
+            }
+          }
+        />
+      </View>
+    </View>
+  </RCTScrollView>
+  <View
+    style={
+      {
+        "alignSelf": "center",
+        "bottom": 20,
+        "left": 20,
+        "paddingHorizontal": 20,
+        "position": "absolute",
+        "right": 20,
+        "zIndex": 10,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "margin": 10,
+        }
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#D3D000",
+            "borderColor": "#D3D000",
+            "borderRadius": 8,
+            "borderWidth": 2,
+            "fontSize": 14,
+            "height": 50,
+            "justifyContent": "center",
+            "letterSpacing": 1,
+            "opacity": 1,
+            "paddingHorizontal": 24,
+            "paddingVertical": 12,
+            "transitionDuration": 0.3,
+            "width": "auto",
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "#000000",
+              "fontSize": 16,
+              "fontWeight": "500",
+            }
+          }
+        >
+          Agregar
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Render Header 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Text />
+    <Text
+      style={
+        {
+          "color": "#00267F",
+          "fontWeight": "bold",
+          "marginLeft": 8,
+          "paddingVertical": 20,
+          "textAlign": "center",
+        }
+      }
+    >
+      BANCO
+    </Text>
+  </View>
+  <View
+    style={
+      {
+        "alignSelf": "center",
+        "borderBottomColor": "#BFBFBF",
+        "borderBottomWidth": 1,
+        "width": "100%",
+      }
+    }
+  />
+</View>
+`;
