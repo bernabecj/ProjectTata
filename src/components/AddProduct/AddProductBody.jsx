@@ -21,7 +21,6 @@ const AddProductBody = () => {
 
     const sendData = async () => {
         try {
-            console.log("formData: ", formData);
             const options = {
                 method: "POST",
                 url: "/bp/products",

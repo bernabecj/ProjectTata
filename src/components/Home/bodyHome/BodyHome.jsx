@@ -144,7 +144,6 @@ const BodyHome = () => {
                     action={() => {
                         navigation.navigate("AddProduct");
                     }}
-                    type="quitModal"
                     textContent="Agregar"
                     buttonStyles={{ width: "auto" }}
                 />

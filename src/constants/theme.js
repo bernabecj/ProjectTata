@@ -9,6 +9,7 @@ const COLORS = {
   grey2: "#A0A0A0",
 
   yellow: "#D3D000",
+  kindWhite: "#C5C5C5",
 
   buttons: "#ff8c52",
 
