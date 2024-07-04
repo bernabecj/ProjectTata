@@ -5,6 +5,11 @@ const SCREEN_HEIGHT = Dimensions.get('window').height;
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const COLORS = {
+  grey: "#BFBFBF",
+  grey2: "#A0A0A0",
+
+  yellow: "#D3D000",
+
   buttons: "#ff8c52",
 
   CardComment: '#86939e',
