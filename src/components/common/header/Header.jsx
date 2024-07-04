@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
-import styles from "./homeHeader.style"; // Assuming you have some additional styles in homeHeader.style
+import styles from "./header.style"; // Assuming you have some additional styles in homeHeader.style
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { COLORS } from "../../../constants";
 
-const HomeHeader = () => {
+const Header = () => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -27,4 +27,4 @@ const HomeHeader = () => {
     );
 };
 
-export default HomeHeader;
+export default Header;

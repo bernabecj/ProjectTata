@@ -1,11 +1,10 @@
-import { View, Text } from 'react-native'
 import React from 'react'
-import { EditProductBody, HomeHeader } from '../components'
+import { EditProductBody, Header } from '../components'
 
 const EditProduct = ({ route }) => {
     return (
         <>
-            <HomeHeader />
+            <Header />
             <EditProductBody route={route} />
         </>
     )

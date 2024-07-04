@@ -1,11 +1,11 @@
 // ToolBar
 import ToolBar from "./common/toolBar/ToolBar";
 
-// Home header
-import HomeHeader from "./Home/homeHeader/HomeHeader"
+// Header
+import Header from "./common/header/Header"
 
 // BodyHome
-import BodyHome from "./Home/bodyHome/BodyHome";
+import BodyHome from "./Home/BodyHome";
 
 // CustomButton
 import CustomButton from "./common/customButton/CustomButton";
@@ -17,4 +17,4 @@ import EditProductBody from "./editProduct/EditProductBody";
 import AddProductBody from "./AddProduct/AddProductBody";
 
 
-export { ToolBar, HomeHeader, BodyHome, CustomButton, EditProductBody, AddProductBody }
+export { ToolBar, Header, BodyHome, CustomButton, EditProductBody, AddProductBody }

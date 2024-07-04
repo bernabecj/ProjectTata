@@ -1,7 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { useEffect, useState } from "react";
-import { Platform, Appearance } from "react-native";
+import { Appearance } from "react-native";
 
 // Navigation
 import { NavigationContainer } from "@react-navigation/native";

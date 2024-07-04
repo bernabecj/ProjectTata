@@ -1,11 +1,10 @@
-import { View, Text } from 'react-native'
 import React from 'react'
-import { AddProductBody, HomeHeader } from '../components'
+import { AddProductBody, Header } from '../components'
 
 const AddProduct = () => {
     return (
         <>
-            <HomeHeader />
+            <Header />
             <AddProductBody />
         </>
     )

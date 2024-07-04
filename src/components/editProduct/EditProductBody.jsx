@@ -1,24 +1,16 @@
 import React, { useState } from "react";
-import {
-    View,
-    Text,
-    TextInput,
-    ScrollView,
-    StyleSheet,
-    TouchableOpacity,
-    ActivityIndicator,
-    RefreshControl,
-} from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { View, Text, TextInput, ScrollView, StyleSheet } from "react-native";
 import { COLORS } from "../../constants";
 import { client } from "../../../config";
 import CustomButton from "../common/customButton/CustomButton";
 import { useNavigation } from "@react-navigation/native";
 import Toast from "react-native-toast-message";
 import Modal from "react-native-modal";
+import styles from "./editProductBody.style";
 
 const EditProductBody = ({ route }) => {
     const navigation = useNavigation();
+
     const { product } = route.params;
     const [formData, setFormData] = useState({
         id: product.id || "",
@@ -102,33 +94,33 @@ const EditProductBody = ({ route }) => {
 
     return (
         <View style={{ flex: 1 }}>
-            <ScrollView style={localStyles.scrollView}>
-                <View style={localStyles.container}>
-                    <Text style={localStyles.headerText}>
+            <ScrollView style={styles.scrollView}>
+                <View style={styles.container}>
+                    <Text style={styles.headerText}>
                         Formulario de registro
                     </Text>
                     <View>
-                        <Text style={localStyles.label}>ID</Text>
+                        <Text style={styles.label}>ID</Text>
                         <TextInput
-                            style={localStyles.input}
+                            style={styles.input}
                             value={formData.id}
                             onChangeText={(text) => handleChange("id", text)}
                         />
                     </View>
 
                     <View>
-                        <Text style={localStyles.label}>Nombre</Text>
+                        <Text style={styles.label}>Nombre</Text>
                         <TextInput
-                            style={localStyles.input}
+                            style={styles.input}
                             value={formData.name}
                             onChangeText={(text) => handleChange("name", text)}
                         />
                     </View>
 
                     <View>
-                        <Text style={localStyles.label}>Descripción</Text>
+                        <Text style={styles.label}>Descripción</Text>
                         <TextInput
-                            style={localStyles.input}
+                            style={styles.input}
                             value={formData.description}
                             onChangeText={(text) =>
                                 handleChange("description", text)
@@ -137,18 +129,18 @@ const EditProductBody = ({ route }) => {
                     </View>
 
                     <View>
-                        <Text style={localStyles.label}>Logo</Text>
+                        <Text style={styles.label}>Logo</Text>
                         <TextInput
-                            style={localStyles.input}
+                            style={styles.input}
                             value={formData.logo}
                             onChangeText={(text) => handleChange("logo", text)}
                         />
                     </View>
 
                     <View>
-                        <Text style={localStyles.label}>Fecha liberación</Text>
+                        <Text style={styles.label}>Fecha liberación</Text>
                         <TextInput
-                            style={localStyles.input}
+                            style={styles.input}
                             value={formData.date_release}
                             onChangeText={(text) =>
                                 handleChange("date_release", text)
@@ -157,9 +149,9 @@ const EditProductBody = ({ route }) => {
                     </View>
 
                     <View>
-                        <Text style={localStyles.label}>Fecha revisión</Text>
+                        <Text style={styles.label}>Fecha revisión</Text>
                         <TextInput
-                            style={localStyles.input}
+                            style={styles.input}
                             value={formData.date_revision}
                             onChangeText={(text) =>
                                 handleChange("date_revision", text)
@@ -168,7 +160,7 @@ const EditProductBody = ({ route }) => {
                     </View>
                 </View>
             </ScrollView>
-            <View style={localStyles.buttonContainer}>
+            <View style={styles.buttonContainer}>
                 <CustomButton
                     backgroundColor={COLORS.yellow}
                     borderColor={COLORS.yellow}
@@ -191,12 +183,10 @@ const EditProductBody = ({ route }) => {
             <Modal
                 isVisible={isModalVisible}
                 onBackdropPress={() => setModalVisible(false)}
-                style={localStyles.modal}
+                style={styles.modal}
             >
-                <View style={localStyles.modalContent}>
-                    <Text style={localStyles.modalTitle}>
-                        Confirmar eliminación
-                    </Text>
+                <View style={styles.modalContent}>
+                    <Text style={styles.modalTitle}>Confirmar eliminación</Text>
                     <View
                         style={{
                             alignSelf: "center",
@@ -206,7 +196,7 @@ const EditProductBody = ({ route }) => {
                             marginVertical: 15,
                         }}
                     />
-                    <Text style={localStyles.modalText}>
+                    <Text style={styles.modalText}>
                         ¿Estás seguro de que deseas eliminar el producto con id:{" "}
                         {product.id}?
                     </Text>
@@ -219,7 +209,7 @@ const EditProductBody = ({ route }) => {
                             marginVertical: 15,
                         }}
                     />
-                    <View style={localStyles.modalButtonContainer}>
+                    <View style={styles.modalButtonContainer}>
                         <CustomButton
                             backgroundColor={COLORS.yellow}
                             borderColor={COLORS.yellow}
@@ -241,67 +231,5 @@ const EditProductBody = ({ route }) => {
         </View>
     );
 };
-
-const localStyles = StyleSheet.create({
-    scrollView: {
-        flex: 1,
-    },
-    container: {
-        flex: 1,
-        padding: 20,
-        marginBottom: 150,
-    },
-    headerText: {
-        fontSize: 24,
-        fontWeight: "bold",
-        marginBottom: 20,
-    },
-    input: {
-        height: 55,
-        borderColor: "#ccc",
-        borderWidth: 1,
-        borderRadius: 4,
-        paddingHorizontal: 10,
-        marginBottom: 20,
-        width: "100%",
-    },
-    buttonContainer: {
-        position: "absolute",
-        bottom: 20,
-        left: 20,
-        right: 20,
-        zIndex: 10,
-        alignSelf: "center",
-        paddingHorizontal: 20,
-    },
-    label: {
-        fontSize: 16,
-        marginBottom: 8,
-        color: COLORS.black,
-        fontWeight: "500",
-    },
-    modal: {
-        justifyContent: "flex-end",
-        margin: 0,
-    },
-    modalContent: {
-        backgroundColor: "white",
-        padding: 22,
-        borderTopLeftRadius: 17,
-        borderTopRightRadius: 17,
-    },
-    modalTitle: {
-        fontSize: 20,
-        fontWeight: "bold",
-        // marginBottom: 12,
-    },
-    modalText: {
-        fontSize: 16,
-        marginBottom: 15,
-    },
-    modalButtonContainer: {
-        margin: "auto",
-    },
-});
 
 export default EditProductBody;

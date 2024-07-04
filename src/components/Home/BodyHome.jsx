@@ -4,23 +4,24 @@ import {
     Text,
     TextInput,
     ScrollView,
-    StyleSheet,
     TouchableOpacity,
     ActivityIndicator,
     RefreshControl,
 } from "react-native";
 
 import { AntDesign } from "@expo/vector-icons";
-import { COLORS } from "../../../constants";
-import { client } from "../../../../config";
-import CustomButton from "../../common/customButton/CustomButton";
+import { COLORS } from "../../constants";
+import { client } from "../../../config";
+import CustomButton from "../common/customButton/CustomButton";
 import { useNavigation } from "@react-navigation/native";
+import styles from "./bodyHome.style";
 
 const BodyHome = () => {
     const navigation = useNavigation();
     const [productsList, setProductsList] = useState([]);
     const [loading, setLoading] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
         fetchProducts();
@@ -44,8 +45,8 @@ const BodyHome = () => {
         } catch (error) {
             console.log(error);
         } finally {
-            setLoading(false); // Set loading to false after fetching
-            setRefreshing(false); // Set refreshing to false after fetch or on error
+            setLoading(false);
+            setRefreshing(false);
         }
     };
 
@@ -54,10 +55,14 @@ const BodyHome = () => {
         fetchProducts();
     };
 
+    const filteredProducts = productsList.filter((product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <View style={{ flex: 1 }}>
             <ScrollView
-                style={localStyles.scrollView}
+                style={styles.scrollView}
                 refreshControl={
                     <RefreshControl
                         refreshing={refreshing}
@@ -67,11 +72,13 @@ const BodyHome = () => {
                     />
                 }
             >
-                <View style={localStyles.container}>
-                    <Text style={localStyles.headerText}>Products</Text>
+                <View style={styles.container}>
+                    <Text style={styles.headerText}>Products</Text>
                     <TextInput
-                        style={localStyles.searchBar}
+                        style={styles.searchBar}
                         placeholder="Search..."
+                        value={searchQuery}
+                        onChangeText={setSearchQuery}
                     />
                     {loading && !refreshing ? (
                         <ActivityIndicator
@@ -79,17 +86,17 @@ const BodyHome = () => {
                             color={COLORS.primary}
                         />
                     ) : (
-                        <View style={localStyles.gridContainer}>
-                            {productsList.map((product, index) => (
+                        <View style={styles.gridContainer}>
+                            {filteredProducts.map((product, index) => (
                                 <TouchableOpacity
                                     key={index}
                                     style={[
-                                        localStyles.gridItem,
+                                        styles.gridItem,
                                         {
                                             width: "100%",
                                             borderBottomWidth:
                                                 index ===
-                                                productsList.length - 1
+                                                filteredProducts.length - 1
                                                     ? 0
                                                     : 1,
                                             borderBottomColor: "#ccc",
@@ -101,26 +108,20 @@ const BodyHome = () => {
                                         });
                                     }}
                                 >
-                                    <View style={localStyles.leftText}>
-                                        <Text
-                                            style={localStyles.leftTextContent}
-                                        >
+                                    <View style={styles.leftText}>
+                                        <Text style={styles.leftTextContent}>
                                             {product.name}{" "}
                                         </Text>
                                     </View>
-                                    <View style={localStyles.bottomText}>
-                                        <Text
-                                            style={
-                                                localStyles.bottomTextContent
-                                            }
-                                        >
+                                    <View style={styles.bottomText}>
+                                        <Text style={styles.bottomTextContent}>
                                             ID: {product.id}{" "}
                                         </Text>
                                     </View>
-                                    <View style={localStyles.middleCenterText}>
+                                    <View style={styles.middleCenterText}>
                                         <Text
                                             style={
-                                                localStyles.middleCenterTextContent
+                                                styles.middleCenterTextContent
                                             }
                                         >
                                             <AntDesign
@@ -136,7 +137,7 @@ const BodyHome = () => {
                     )}
                 </View>
             </ScrollView>
-            <View style={localStyles.buttonContainer}>
+            <View style={styles.buttonContainer}>
                 <CustomButton
                     backgroundColor={COLORS.yellow}
                     borderColor={COLORS.yellow}
@@ -151,75 +152,5 @@ const BodyHome = () => {
         </View>
     );
 };
-
-const localStyles = StyleSheet.create({
-    scrollView: {
-        flex: 1,
-    },
-    container: {
-        flex: 1,
-        padding: 20,
-        marginBottom: 100,
-    },
-    headerText: {
-        fontSize: 24,
-        fontWeight: "bold",
-        marginBottom: 20,
-    },
-    searchBar: {
-        height: 40,
-        borderColor: "#ccc",
-        borderWidth: 1,
-        borderRadius: 8,
-        paddingHorizontal: 10,
-        marginBottom: 20,
-        width: "100%",
-    },
-    gridContainer: {
-        flexDirection: "row",
-        flexWrap: "wrap",
-        borderWidth: 1,
-        borderColor: "#ccc",
-        borderRadius: 8,
-    },
-    gridItem: {
-        height: 60,
-        padding: 10,
-        position: "relative",
-    },
-    leftText: {
-        position: "absolute",
-        top: 10,
-        left: 20,
-    },
-    leftTextContent: {
-        fontSize: 16,
-        fontWeight: "bold",
-    },
-    bottomText: {
-        position: "absolute",
-        bottom: 10,
-        left: 20,
-    },
-    bottomTextContent: {
-        fontSize: 14,
-        color: COLORS.grey2,
-    },
-    middleCenterText: {
-        position: "absolute",
-        top: "80%",
-        right: 20,
-        transform: [{ translateY: -12 }],
-    },
-    buttonContainer: {
-        position: "absolute",
-        bottom: 20,
-        left: 20,
-        right: 20,
-        zIndex: 10,
-        alignSelf: "center",
-        paddingHorizontal: 20,
-    },
-});
 
 export default BodyHome;
